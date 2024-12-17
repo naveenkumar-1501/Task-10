@@ -21,18 +21,6 @@ class Insta:
             print("ERROR : Unable to start the Python Selenium Automation !", error)
             return False
 
-    """Close the popup if it appears"""
-    def close_popup(self):
-        try:
-            # Locate the close button using XPath or another selector
-            sleep(5)
-            close_button = self.driver.find_element(By.XPATH, "/html/body/div[5]/div[1]/div/div[2]/div/div/div/div/div[2]/div/div[1]/div")
-            close_button.click()
-            print("Popup closed successfully.")
-            sleep(2)
-        except Exception as error:
-            print("No popup to close or an error occurred:", error)
-
     """Fetch the followers and following"""
 
     def fetch_followers_following(self):
@@ -63,7 +51,6 @@ if __name__ == "__main__":
     naveen = Insta(url)
     if naveen.start():
         sleep(10)
-        naveen.close_popup()
         followers, following = naveen.fetch_followers_following()
 
         if followers and following:
